@@ -1,10 +1,24 @@
-import en from '../locales/en.json'
-import es from '../locales/es.json'
-import fr from '../locales/fr.json'
-import ar from '../locales/ar.json'
+const map = {
+  en: {
+    siteTitle: "Salinas Sports Academy",
+    tagline: "Where talent meets opportunity",
+    applyNow: "Apply Now",
+    viewPrograms: "View Programs",
+    programs: "Programs",
+    coaches: "Coaches",
+    placements: "Placements",
+    apply: "Apply",
+    contact: "Contact",
+    subscribe: "Subscribe",
+    admissionsResponse: "Admissions Response",
+  },
+  es: { /* ... */ },
+  fr: { /* ... */ },
+  ar: { /* ... */ },
+};
 
-const map = { en, es, fr, ar }
+type Lang = keyof typeof map;
 
-export default function translations(lang='en') {
-  return map[lang] || map['en']
+export default function translations(lang: Lang | string = "en") {
+  return map[lang as Lang] || map["en"];
 }
