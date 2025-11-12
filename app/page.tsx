@@ -43,15 +43,16 @@ export default function SalinasAcademySite() {
     },
   ];
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
+ function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
   const { name, value } = e.target;
 
-  if (name === "resume" && "files" in e.target && e.target.files?.length) {
+  if (name === "resume" && e.target instanceof HTMLInputElement && e.target.files?.length) {
     setFormState((s) => ({ ...s, resume: e.target.files[0] }));
   } else {
     setFormState((s) => ({ ...s, [name]: value }));
   }
 }
+
 
 
 function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
