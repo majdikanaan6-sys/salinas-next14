@@ -9,15 +9,25 @@ import { Search, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function SalinasAcademySite() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [formState, setFormState] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    country: '',
-    program: '6-month',
-    message: '',
-    resume: null,
-  });
+ const [formState, setFormState] = useState<{
+  firstName: string;
+  lastName: string;
+  email: string;
+  country: string;
+  program: string;
+  message: string;
+  resume: File | null;
+}>({
+  firstName: "",
+  lastName: "",
+  email: "",
+  country: "",
+  program: "",
+  message: "",
+  resume: null,
+});
+
+
   const [submitted, setSubmitted] = useState(false);
   const programs = [
     {
@@ -44,14 +54,18 @@ export default function SalinasAcademySite() {
   ];
 
  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
-  const { name, value } = e.target;
+  const target = e.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+  const { name, value } = target;
 
-  if (name === "resume" && e.target instanceof HTMLInputElement && e.target.files?.length) {
-    setFormState((s) => ({ ...s, resume: e.target.files[0] }));
+  if (name === "resume" && target instanceof HTMLInputElement && target.files && target.files.length > 0) {
+    const file = target.files[0];
+    setFormState((s) => ({ ...s, resume: file }));
   } else {
     setFormState((s) => ({ ...s, [name]: value }));
   }
 }
+
+
 
 
 
