@@ -188,7 +188,7 @@ function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img
               alt="Training session at Salinas Soccer Academy"
-              src="/salinas-hero.jpg"
+              src="https://link-on.online/img/hero.jpg"
               className="w-full h-80 object-cover"
             />
           </div>
